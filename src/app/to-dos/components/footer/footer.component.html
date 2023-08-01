@@ -1,1 +1,10 @@
-<p>footer works!</p>
+<footer *ngIf="noToDos()">
+  <span>{{activeItems()}}</span>
+  <span>{{itemsLeft()}}</span>
+  <button mat-button color="primary" [ngClass]="{selected: filterSignal() === filterEnum.ALL}"
+    (click)="setFilter(filterEnum.ALL)">All</button>
+  <button mat-button color="accent" [ngClass]="{selected: filterSignal() === filterEnum.ACTIVE}"
+    (click)="setFilter(filterEnum.ACTIVE)">Active</button>
+  <button mat-button color="warn" [ngClass]="{selected: filterSignal() === filterEnum.COMPLETED}"
+    (click)="setFilter(filterEnum.COMPLETED)">Completed</button>
+</footer>

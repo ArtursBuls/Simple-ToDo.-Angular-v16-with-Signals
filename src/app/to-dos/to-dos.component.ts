@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { ToDoItemComponent } from './components/to-do-item/to-do-item.component';
+import { Component } from '@angular/core';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MainComponent } from './components/main/main.component';
 
 @Component({
   selector: 'app-to-dos',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, ToDoItemComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, MainComponent, FooterComponent],
   templateUrl: './to-dos.component.html',
   styleUrls: ['./to-dos.component.scss'],
 })
