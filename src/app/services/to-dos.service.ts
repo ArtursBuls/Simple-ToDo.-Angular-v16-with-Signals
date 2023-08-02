@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import { ToDo } from '../types/to-do.interface';
 import { FilterEnum } from '../types/filter.enum';
+import { ToDo } from '../types/to-do.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,25 @@ export class ToDosService {
       title: text,
       isCompleted: false,
     };
-    this.toDosSignal.update(item => [...item, newToDo]);
+    this.toDosSignal.update(items => [...items, newToDo]);
+  }
+
+  editToDo(id: string, title: string) {
+    this.toDosSignal.update(items => items.map(element => (element.id === id ? { ...element, title } : element)));
+  }
+
+  deleteToDo(id: string) {
+    this.toDosSignal.update(items => items.filter(element => element.id !== id));
+  }
+
+  toggleToDo(id: string) {
+    this.toDosSignal.update(items =>
+      items.map(element => (element.id === id ? { ...element, isCompleted: !element.isCompleted } : element)),
+    );
+  }
+
+  toggleAllToDos(isCompleted: boolean): void {
+    this.toDosSignal.update(items => items.map(element => ({ ...element, isCompleted })));
   }
 
   setFilter(filterValue: FilterEnum) {

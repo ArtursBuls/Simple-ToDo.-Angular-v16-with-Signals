@@ -1,3 +1,19 @@
-<div>
-  <span (dblclick)="editItem(item.id)">{{item.title}}</span>
+<div class="container">
+  <div>
+    <mat-checkbox [checked]="item.isCompleted" color="primary" (change)="toggleIsCompleted()">
+    </mat-checkbox>
+    <div *ngIf="!isEditing" (dblclick)="enterEditMode()">{{item.title}}</div>
+    <button matSuffix mat-icon-button (click)="deleteItem()">
+      <mat-icon class="delete-icon">delete_forever</mat-icon>
+    </button>
+  </div>
+
+  <ng-container *ngIf="isEditing">
+    <mat-form-field>
+      <input #editInput [formControl]="editableToDo" matInput type="text" (keyup.enter)="editItem()">
+      <button matSuffix mat-icon-button (click)="closeEditMode()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </ng-container>
 </div>

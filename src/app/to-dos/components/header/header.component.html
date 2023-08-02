@@ -1,6 +1,6 @@
 <header>
-  <h1>todos</h1>
-  <mat-form-field class="example-form-field">
+  <h1>ToDos</h1>
+  <mat-form-field>
     <input [formControl]="newToDo" matInput type="text" placeholder="Write here..." autofocus (keyup.enter)="addTodo()">
     <button *ngIf="newToDo.value" matSuffix mat-icon-button (click)="clearInput()">
       <mat-icon>close</mat-icon>

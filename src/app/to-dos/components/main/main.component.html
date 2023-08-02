@@ -1,3 +1,6 @@
 <main>
-  <app-to-do-item *ngFor="let toDo of filteredToDos()" [item]="toDo"></app-to-do-item>
+  <mat-checkbox *ngIf="filteredToDos().length" color="primary" (change)="selectAll($event)" [checked]="isAllItemsChecked()">
+  </mat-checkbox>
+  <app-to-do-item *ngFor="let toDo of filteredToDos()" [item]="toDo" [isEditing]="editingId === toDo.id"
+    (renderEditedToDo)="setEditingId($event)"></app-to-do-item>
 </main>
