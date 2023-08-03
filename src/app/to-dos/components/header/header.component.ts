@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ToDosService } from 'src/app/services/to-dos.service';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,7 @@ import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox
     MatIconModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatTooltipModule
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

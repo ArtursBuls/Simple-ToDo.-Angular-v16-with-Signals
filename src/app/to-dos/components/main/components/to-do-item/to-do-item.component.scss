@@ -18,4 +18,10 @@
   &.completed {
     text-decoration: line-through;
   }
+
+  span {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

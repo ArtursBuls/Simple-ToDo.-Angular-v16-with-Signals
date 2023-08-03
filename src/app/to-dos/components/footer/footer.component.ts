@@ -20,8 +20,15 @@ export class FooterComponent {
   );
   noToDos: Signal<boolean> = computed(() => !!this.toDosService.toDosSignal().length);
   itemsLeft: Signal<string> = computed(() => `item${this.activeItems() !== 1 ? 's' : ''} left`);
+  isAtLeastOneItemSelected: Signal<boolean> = computed(() =>
+    this.toDosService.toDosSignal().some(element => element.isCompleted),
+  );
 
   setFilter(filterValue: FilterEnum) {
     this.toDosService.setFilter(filterValue);
+  }
+
+  removeCompletedItems() {
+    this.toDosService.deleteCompletedToDos();
   }
 }

@@ -52,6 +52,10 @@ export class ToDosService {
     this.filterSignal.set(filterValue);
   }
 
+  deleteCompletedToDos() {
+    this.toDosSignal.update(items => items.filter(element => !element.isCompleted));
+  }
+
   //TODO! Should think about better unique id implementation :-);
   private generateRandomId(): string {
     const randomString = Math.random().toString(36).substring(2);

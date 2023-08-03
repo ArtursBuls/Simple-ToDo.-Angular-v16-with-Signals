@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ToDosService } from 'src/app/services/to-dos.service';
 import { ToDo } from 'src/app/types/to-do.interface';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-to-do-item',
@@ -21,6 +22,7 @@ import { ToDo } from 'src/app/types/to-do.interface';
     ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatTooltipModule,
   ],
   templateUrl: './to-do-item.component.html',
   styleUrls: ['./to-do-item.component.scss'],

@@ -9,4 +9,9 @@
     <button mat-button color="primary" [ngClass]="{selected: filterSignal() === filterEnum.COMPLETED}"
       (click)="setFilter(filterEnum.COMPLETED)">Completed</button>
   </div>
+  <button *ngIf="isAtLeastOneItemSelected(); else noItemsSelected" class="remove-all-selected" mat-button
+    (click)="removeCompletedItems()">Remove
+    completed</button>
 </footer>
+
+<ng-template #noItemsSelected></ng-template>

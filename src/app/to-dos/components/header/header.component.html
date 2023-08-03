@@ -1,7 +1,8 @@
 <header>
   <h1>ToDos</h1>
   <div class="content-wrapper">
-    <mat-checkbox *ngIf="toDosService.filteredToDos().length; else noItems" color="primary" (change)="selectAll($event)"
+    <mat-checkbox *ngIf="toDosService.filteredToDos().length > 2; else noItems" matTooltip="Complete all"
+      matTooltipPosition="above" matTooltipClass="mat-tooltip" color="primary" (change)="selectAll($event)"
       [checked]="isAllItemsChecked()">
     </mat-checkbox>
     <mat-form-field id="toggle all">

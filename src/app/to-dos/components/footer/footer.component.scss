@@ -1,6 +1,6 @@
 footer {
   display: grid;
-  grid-template-columns: 50px 0.5fr 1fr;
+  grid-template-columns: 50px 100px 1fr 1fr;
   align-items: center;
   min-height: 56px;
   gap: 10px;
@@ -14,6 +14,18 @@ footer {
     grid-template-columns: repeat(3, 0.5fr);
     gap: 10px;
     margin-right: 10px;
+  }
+
+  .remove-all-selected {
+    color: var(--main-background-color);
+    border: 1px solid var(--main-background-color);
+    opacity: 0.6;
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--warning-color);
+      opacity: 1;
+    }
   }
 }
 

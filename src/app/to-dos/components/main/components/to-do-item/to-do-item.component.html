@@ -3,12 +3,15 @@
   </mat-checkbox>
 
   <div *ngIf="!isEditing" class="item-title" [ngClass]="{ completed: item.isCompleted }" (dblclick)="enterEditMode()">
-    {{item.title}}</div>
+    <span matTooltip="Dbl click to edit" matTooltipClass="mat-tooltip"
+      matTooltipPosition="above">{{item.title}}</span>
+  </div>
 
   <ng-container *ngIf="isEditing">
     <mat-form-field>
       <input #editInput [formControl]="editableToDo" matInput type="text" (keyup.enter)="editItem()">
-      <button matSuffix mat-icon-button (click)="closeEditMode()">
+      <button matSuffix mat-icon-button matTooltip="Close edit" matTooltipPosition="above"
+        matTooltipClass="mat-tooltip" (click)="closeEditMode()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
