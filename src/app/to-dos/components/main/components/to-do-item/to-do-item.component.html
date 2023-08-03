@@ -1,12 +1,9 @@
 <div class="container">
-  <div>
-    <mat-checkbox [checked]="item.isCompleted" color="primary" (change)="toggleIsCompleted()">
-    </mat-checkbox>
-    <div *ngIf="!isEditing" (dblclick)="enterEditMode()">{{item.title}}</div>
-    <button matSuffix mat-icon-button (click)="deleteItem()">
-      <mat-icon class="delete-icon">delete_forever</mat-icon>
-    </button>
-  </div>
+  <mat-checkbox [checked]="item.isCompleted" color="primary" (change)="toggleIsCompleted()">
+  </mat-checkbox>
+
+  <div *ngIf="!isEditing" class="item-title" [ngClass]="{ completed: item.isCompleted }" (dblclick)="enterEditMode()">
+    {{item.title}}</div>
 
   <ng-container *ngIf="isEditing">
     <mat-form-field>
@@ -16,4 +13,8 @@
       </button>
     </mat-form-field>
   </ng-container>
+
+  <button class="delete-button" matSuffix mat-icon-button (click)="deleteItem()">
+    <mat-icon class="delete-icon">delete_forever</mat-icon>
+  </button>
 </div>

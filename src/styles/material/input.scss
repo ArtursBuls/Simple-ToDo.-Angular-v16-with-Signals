@@ -1,0 +1,23 @@
+.mat-mdc-form-field {
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: inherit;
+
+    .mdc-line-ripple::before,
+    .mdc-line-ripple::after {
+      border-bottom: unset;
+    }
+
+    .mdc-text-field__input {
+      color: white;
+      caret-color: white;
+
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}

@@ -1,9 +1,19 @@
 <header>
   <h1>ToDos</h1>
-  <mat-form-field>
-    <input [formControl]="newToDo" matInput type="text" placeholder="Write here..." autofocus (keyup.enter)="addTodo()">
-    <button *ngIf="newToDo.value" matSuffix mat-icon-button (click)="clearInput()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+  <div class="content-wrapper">
+    <mat-checkbox *ngIf="toDosService.filteredToDos().length; else noItems" color="primary" (change)="selectAll($event)"
+      [checked]="isAllItemsChecked()">
+    </mat-checkbox>
+    <mat-form-field id="toggle all">
+      <input [formControl]="newToDo" matInput type="text" placeholder="Write here..." autofocus
+        (keyup.enter)="addTodo()">
+      <button *ngIf="newToDo.value" matSuffix mat-icon-button (click)="clearInput()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
 </header>
+
+<ng-template #noItems>
+  <div></div>
+</ng-template>
