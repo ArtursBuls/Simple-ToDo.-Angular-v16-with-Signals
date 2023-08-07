@@ -1,5 +1,7 @@
 .mat-mdc-form-field {
+
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+
     background-color: inherit;
 
     .mdc-line-ripple::before,
@@ -19,5 +21,9 @@
 
   .mat-mdc-form-field-subscript-wrapper {
     display: none;
+  }
+
+  &.custom_background {
+    background-color: #8db68d;
   }
 }

@@ -1,4 +1,7 @@
-<main *ngIf="toDosService.filteredToDos().length">
-  <app-to-do-item *ngFor="let toDo of toDosService.filteredToDos()" [item]="toDo" [isEditing]="editingId === toDo.id"
-    (renderEditedToDo)="setEditingId($event)"></app-to-do-item>
-</main>
+<div cdkDropListGroup>
+  <main cdkDropList [cdkDropListData]="toDosService.filteredToDos()" *ngIf="toDosService.filteredToDos().length"
+    (cdkDropListDropped)="dragDrop($event)">
+    <app-to-do-item *ngFor="let toDo of toDosService.filteredToDos()" [item]="toDo" [isEditing]="editingId === toDo.id"
+      (renderEditedToDo)="setEditingId($event)" cdkDrag></app-to-do-item>
+  </main>
+</div>
