@@ -3,7 +3,8 @@
   </mat-checkbox>
 
   <div *ngIf="!isEditing" class="item-title" [ngClass]="{completed: item.isCompleted}" (dblclick)="enterEditMode()">
-    <span matTooltip="Dbl click to edit" matTooltipClass="mat-tooltip" matTooltipPosition="above">{{item.title}}</span>
+    <span id="itemTitle" matTooltip="Dbl click to edit" matTooltipClass="mat-tooltip"
+      matTooltipPosition="above">{{item.title}}</span>
   </div>
 
   <ng-container *ngIf="isEditing">

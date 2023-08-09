@@ -3,11 +3,13 @@ import { ToDosService } from 'src/app/services/to-dos.service';
 import { MainComponent } from './main.component';
 import { By } from '@angular/platform-browser';
 import { ToDoItemComponent } from './components/to-do-item/to-do-item.component';
+import { DebugElement } from '@angular/core';
 
 describe('MainComponent', () => {
   let main: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
   let toDosService: ToDosService;
+  let el: DebugElement;
 
   beforeEach(waitForAsync(() =>
     TestBed.configureTestingModule({
@@ -16,14 +18,14 @@ describe('MainComponent', () => {
       .compileComponents()
       .then(() => {
         fixture = TestBed.createComponent(MainComponent);
-        main = fixture.debugElement.componentInstance;
+        el = fixture.debugElement;
+        main = el.componentInstance;
         toDosService = TestBed.inject(ToDosService);
         toDosService.addToDo('This is a new toDo one');
         toDosService.addToDo('This is a new toDo two');
         toDosService.addToDo('This is a new toDo three');
         toDosService.addToDo('This is a new toDo four');
         toDosService.addToDo('This is a new toDo five');
-        fixture.detectChanges();
       })));
 
   it('should create', () => {
@@ -51,7 +53,8 @@ describe('MainComponent', () => {
   });
 
   it('should render correct number of app-to-do-item components', () => {
-    const toDoItems = fixture.debugElement.queryAll(By.directive(ToDoItemComponent));
+    fixture.detectChanges();
+    const toDoItems = el.queryAll(By.directive(ToDoItemComponent));
     expect(toDoItems.length).toBe(5);
   });
 });
