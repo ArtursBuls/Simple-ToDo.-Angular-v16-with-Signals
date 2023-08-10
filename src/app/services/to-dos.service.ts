@@ -56,7 +56,7 @@ export class ToDosService {
   }
 
   //TODO! Should think about better unique id implementation :-);
-  generateRandomId(): string {
+  private generateRandomId(): string {
     const randomString = Math.random().toString(36).substring(2);
     const timestamp = Date.now().toString(36);
     return randomString + timestamp;

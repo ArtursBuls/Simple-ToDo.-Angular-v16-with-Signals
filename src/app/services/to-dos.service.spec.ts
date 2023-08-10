@@ -90,7 +90,9 @@ describe('ToDosService', () => {
     let i = 0;
     let idsArray: string[] = [];
     while (i < 5) {
-      idsArray.push(toDosService.generateRandomId());
+      idsArray.push(toDosService['generateRandomId']());
+      /*This strange syntax of calling PRIVATE ['generateRandomId'] method presented to avoid error:
+      "Property 'generateRandomId' is private and only accessible within class 'ToDosService'";*/
       i++;
     }
     const allUnique = (array: string[]) => array.length === new Set(array).size;

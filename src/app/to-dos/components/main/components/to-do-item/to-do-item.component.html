@@ -11,7 +11,7 @@
     <mat-form-field [ngClass]="{custom_background: isEditing}">
       <input #editInput [formControl]="editableToDo" matInput type="text" (keyup.enter)="editItem()">
       <button matSuffix mat-icon-button matTooltip="Close edit" matTooltipPosition="above" matTooltipClass="mat-tooltip"
-        (click)="closeEditMode()">
+        (click)="closeEditMode()" class="close-edit-button">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
