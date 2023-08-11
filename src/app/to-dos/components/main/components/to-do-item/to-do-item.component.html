@@ -9,7 +9,7 @@
 
   <ng-container *ngIf="isEditing">
     <mat-form-field [ngClass]="{custom_background: isEditing}">
-      <input #editInput [formControl]="editableToDo" matInput type="text" (keyup.enter)="editItem()">
+      <input #editInput [formControl]="editableToDo" matInput type="text" (keyup.enter)="editItem()" class="edit-input">
       <button matSuffix mat-icon-button matTooltip="Close edit" matTooltipPosition="above" matTooltipClass="mat-tooltip"
         (click)="closeEditMode()" class="close-edit-button">
         <mat-icon>close</mat-icon>

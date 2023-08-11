@@ -41,7 +41,7 @@ export class ToDoItemComponent {
     this.renderEditedToDo.emit(this.item.id);
     setTimeout(() => {
       this.editInput?.nativeElement.focus();
-    }, 0); //TODO!Set timeout to wait while component('editInput') will be rendered;
+    }, 0); //Set timeout to wait while component('editInput') will be rendered;
   }
 
   editItem() {

@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 50px 1fr 50px;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   min-height: 56px;
   word-break: break-all;
@@ -29,6 +29,6 @@
   }
 }
 
-//Class only-for testing purposes;
-//.close-edit-button {
-//}
+//Classes only-for testing purposes;
+//.close-edit-button {}
+//.edit-input {}
