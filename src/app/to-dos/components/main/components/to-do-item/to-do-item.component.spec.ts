@@ -171,4 +171,21 @@ describe('ToDoItemComponent', () => {
     tick();
     expect(spy).toHaveBeenCalledTimes(1);
   }));
+
+  xit('should set a new "editableToDo" formControl value if user changes the original one in edit mode', fakeAsync(() => {
+    toDoItem.item = toDosService.filteredToDos()[1];
+    fixture.detectChanges();
+    const titleElement = el.query(By.css('.item-title'));
+    titleElement.triggerEventHandler('dblclick', {});
+    toDoItem.isEditing = true;
+    tick();
+    fixture.detectChanges();
+    const inputField = el.query(By.css('.edit-input'));
+    inputField.nativeElement.value = 'This is a new input field TEST value';
+    inputField.nativeElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    const spy = spyOn(toDosService, 'editToDo').and.callThrough();
+    toDosService.editToDo(toDoItem.item.id, 'This is a new input field TEST value');
+    expect(toDosService.editToDo).toHaveBeenCalledWith(toDoItem.item.id, 'This is a new input field TEST value');
+  }));
 });

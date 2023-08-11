@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ToDosService } from 'src/app/services/to-dos.service';
-import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ToDosService } from 'src/app/services/to-dos.service';
 
 @Component({
   selector: 'app-header',
@@ -21,13 +21,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  newToDo = new FormControl<string>('');
+  newToDo = new FormControl<string | null>('');
   toDosService = inject(ToDosService);
   isAllItemsChecked = computed(() =>
     this.toDosService.toDosSignal().length ? this.toDosService.toDosSignal().every(todo => todo.isCompleted) : false,

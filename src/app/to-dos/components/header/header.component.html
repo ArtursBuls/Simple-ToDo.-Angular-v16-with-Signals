@@ -5,9 +5,9 @@
       matTooltipPosition="above" matTooltipClass="mat-tooltip" color="primary" (change)="selectAll($event)"
       [checked]="isAllItemsChecked()">
     </mat-checkbox>
-    <mat-form-field id="toggle all">
+    <mat-form-field>
       <input [formControl]="newToDo" matInput type="text" placeholder="Write here..." autofocus
-        (keyup.enter)="addTodo()">
+        (keyup.enter)="addTodo()" class="main-input">
       <button *ngIf="newToDo.value" matSuffix mat-icon-button (click)="clearInput()">
         <mat-icon>close</mat-icon>
       </button>
