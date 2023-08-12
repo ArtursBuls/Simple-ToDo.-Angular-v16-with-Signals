@@ -1,7 +1,7 @@
 # AngularVersion16Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
-With Angular Material and Signals. Some Unit Tests Implemented.
+With Angular Material, Drag and drop, and Signals. Full Standalone. Some Unit Tests Implemented. Working on it.
 
 ## Development server
 
