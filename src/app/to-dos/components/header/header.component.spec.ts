@@ -61,18 +61,43 @@ describe('HeaderComponent', () => {
     const checkbox = el.query(By.css('mat-checkbox'));
     checkbox.triggerEventHandler('change');
     tick();
-    expect(header.selectAll).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   }));
 
-  xit('should expect argument from change event by calling selectAll() method on checking/unchecking checkbox', fakeAsync(() => {}));
-
-  xit('should call toggleAllToDos() method from service by calling selectAll() method on checking/unchecking checkbox', fakeAsync(() => {}));
-
-  xit('should call toggleToDo() method from service by calling toggleIsCompleted() method on checking/unchecking checkbox', fakeAsync(() => {
-    spyOn(toDosService, 'toggleToDo');
+  it('should call toggleAllToDos() method from service by calling selectAll() method on checking/unchecking checkbox', fakeAsync(() => {
+    const spy = spyOn(toDosService, 'toggleAllToDos');
+    fixture.detectChanges();
     const checkbox = el.query(By.css('mat-checkbox'));
     checkbox.triggerEventHandler('change');
     tick();
-    expect(toDosService.toggleToDo).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should call addTodo() method on keyup.enter event on input', fakeAsync(() => {
+    const spy = spyOn(header, 'addTodo');
+    fixture.detectChanges();
+    const input = el.query(By.css('.main-input'));
+    input.triggerEventHandler('keyup.enter');
+    tick();
+    expect(spy).toHaveBeenCalled();
+  }));
+
+  it('should call addTodo() method from service by calling addTodo() on keyup.enter event on input', fakeAsync(() => {
+    const spy = spyOn(toDosService, 'addToDo');
+    fixture.detectChanges();
+    const input = el.query(By.css('.main-input'));
+    header.newToDo.setValue('This is a new test todo title value');
+    input.triggerEventHandler('keyup.enter');
+    tick();
+    expect(spy).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should call clearInput() method by calling addTodo() on keyup.enter event on input', fakeAsync(() => {
+    const spy = spyOn(header, 'clearInput');
+    fixture.detectChanges();
+    const input = el.query(By.css('.main-input'));
+    input.triggerEventHandler('keyup.enter');
+    tick();
+    expect(spy).toHaveBeenCalledTimes(1);
   }));
 });

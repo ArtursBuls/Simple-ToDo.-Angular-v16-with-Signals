@@ -46,6 +46,6 @@ export class HeaderComponent {
   }
 
   selectAll(event: MatCheckboxChange): void {
-    this.toDosService.toggleAllToDos(event.checked);
+    this.toDosService.toggleAllToDos(event?.checked);
   }
 }
