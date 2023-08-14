@@ -85,4 +85,33 @@ describe('FooterComponent', () => {
     button.nativeElement.click();
     expect(spy).toHaveBeenCalled();
   }));
+
+  it('should call removeCompletedItems() method on button "Remove completed" click', fakeAsync(() => {
+    const spy = spyOn(footer, 'removeCompletedItems');
+    const itemId = footer.toDosService.filteredToDos()[0].id;
+    footer.toDosService.toggleToDo(itemId);
+    fixture.detectChanges();
+    const button = el.query(By.css('.button-remove'));
+    button.nativeElement.click();
+    expect(spy).toHaveBeenCalled();
+  }));
+
+  it('should call deleteCompletedToDos() method from service by calling removeCompletedItems() method on button "Remove completed" click', fakeAsync(() => {
+    const spy = spyOn(toDosService, 'deleteCompletedToDos');
+    const itemId = footer.toDosService.filteredToDos()[0].id;
+    footer.toDosService.toggleToDo(itemId);
+    fixture.detectChanges();
+    const button = el.query(By.css('.button-remove'));
+    button.nativeElement.click();
+    expect(spy).toHaveBeenCalled();
+  }));
+
+  it('should render string "item left" if there is just one single toDo in the list', fakeAsync(() => {
+    const firstToDoId = footer.toDosService.filteredToDos()[0].id;
+    const secondTodoId = footer.toDosService.filteredToDos()[1].id;
+    footer.toDosService.deleteToDo(firstToDoId);
+    footer.toDosService.deleteToDo(secondTodoId);
+    fixture.detectChanges();
+    expect(footer.itemsLeft()).toBe('item left');
+  }));
 });

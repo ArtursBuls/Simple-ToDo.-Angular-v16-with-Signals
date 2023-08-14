@@ -31,10 +31,17 @@ describe('HeaderComponent', () => {
     expect(header).toBeTruthy();
   });
 
-  it('should return "isAllItemsChecked()" correct value', () => {
+  it('should return "isAllItemsChecked()" "true" value if all toDos "isCompleted" property has "true" value', () => {
     toDosService.toggleAllToDos(true);
-    const result = toDosService.toDosSignal().every(element => element.isCompleted);
+    const result = header.isAllItemsChecked();
     expect(result).toBeTrue();
+  });
+
+  it('should return "isAllItemsChecked()" "false" if there is no any toDos in the list', () => {
+    toDosService.toggleAllToDos(true);
+    toDosService.deleteCompletedToDos();
+    const result = header.isAllItemsChecked();
+    expect(result).toBeFalse();
   });
 
   it('should call clearInput() method on button click', fakeAsync(() => {

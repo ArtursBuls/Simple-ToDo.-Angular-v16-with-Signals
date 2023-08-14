@@ -10,8 +10,7 @@
       (click)="setFilter(filterEnum.COMPLETED)" class="button-completed">Completed</button>
   </div>
   <button *ngIf="isAtLeastOneItemSelected(); else noItemsSelected" class="remove-all-selected" mat-button
-    (click)="removeCompletedItems()">Remove
-    completed</button>
+    (click)="removeCompletedItems()" ngClass="button-remove">Remove completed</button>
 </footer>
 
 <ng-template #noItemsSelected></ng-template>
