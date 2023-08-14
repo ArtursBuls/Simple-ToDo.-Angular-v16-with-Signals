@@ -3,11 +3,11 @@
   <div class="items-left">{{itemsLeft()}}</div>
   <div class="buttons-wrapper">
     <button mat-button color="primary" [ngClass]="{selected: filterSignal() === filterEnum.ALL}"
-      (click)="setFilter(filterEnum.ALL)">All</button>
+      (click)="setFilter(filterEnum.ALL)" class="button-all">All</button>
     <button mat-button color="primary" [ngClass]="{selected: filterSignal() === filterEnum.ACTIVE}"
-      (click)="setFilter(filterEnum.ACTIVE)">Active</button>
+      (click)="setFilter(filterEnum.ACTIVE)" class="button-active">Active</button>
     <button mat-button color="primary" [ngClass]="{selected: filterSignal() === filterEnum.COMPLETED}"
-      (click)="setFilter(filterEnum.COMPLETED)">Completed</button>
+      (click)="setFilter(filterEnum.COMPLETED)" class="button-completed">Completed</button>
   </div>
   <button *ngIf="isAtLeastOneItemSelected(); else noItemsSelected" class="remove-all-selected" mat-button
     (click)="removeCompletedItems()">Remove
